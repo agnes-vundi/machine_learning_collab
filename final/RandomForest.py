@@ -3,13 +3,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn import tree
+from sklearn import ensemble
 from sklearn.tree import export_graphviz
-from sklearn.tree import DecisionTreeRegressor
 import graphviz
 import numpy as np
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-
+from sklearn.ensemble import RandomForestRegressor
 
 #Prepare data 
 df1 = pd.read_csv('gdp_figures.csv')
@@ -34,15 +33,10 @@ X_train, X_test, y_train, y_test, population_train, population_test = train_test
 X_train = pd.get_dummies(X_train, drop_first=True)
 X_test = pd.get_dummies(X_test, drop_first=True)
 
-# train DecisionTreeClassifier
-model = DecisionTreeRegressor(max_depth=20,
-                              random_state=0)
+
+# train RandomForestClassifier
+model = ensemble.RandomForestRegressor(max_depth=20, random_state=0)
 model.fit(X_train,y_train)
-
-
-# visualize the tree
-dot_data = export_graphviz(model, out_file='decisiontree.dot') 
-
 
 # Predicting the Test set results
 y_pred = model.predict(X_test)
@@ -57,5 +51,3 @@ print("Mean Absolute Error is :" ,mae)
 print("Mean Squarred Error is :" ,mse)
 print("Root Mean Squarred Error is : ",rmse)
 print("R2 score of model is :" ,r2)
-
-
