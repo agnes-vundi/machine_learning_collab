@@ -15,7 +15,7 @@ df2 = df2.dropna()
 df = pd.merge(df2, df1)
 df = df.drop_duplicates()
 
-X = df[['country','sex','age','gdp_per_capita ($)']] # or df.loc[:, ['PClass','Age','GenderCode']]
+X = df[['sex','age','gdp_per_capita ($)']] 
 y_orig = df[['suicides_no','population']]
 population = df[['population']]
 
@@ -27,6 +27,7 @@ X_train, X_test, y_train, y_test, population_train, population_test = train_test
 
 # Save the original format data in readable format for the later testing phase
 X_test_orig = X_test
+
 
 #dummy and scale X values
 X_train = pd.get_dummies(X_train, drop_first=True)
@@ -57,11 +58,11 @@ mae = mean_absolute_error(y_test, y_pred)
 mse = mean_squared_error(y_test, y_pred)
 rmse = np.sqrt(mse)
 r2 = r2_score(y_test, y_pred)
-print ('\nTestdata metrics:')
-print("Mean Absolute Error is :" ,mae)
-print("Mean Squarred Error is :" ,mse)
-print("Root Mean Squarred Error is : ",rmse)
-print("R2 score of model is :" ,r2)
+print ('\nTest data metrics(without country as an independent variable ):')
+print("Mean Absolute Error is:" ,mae)
+print("Mean Squared Error is:" ,mse)
+print("Root Mean Squared Error is: ",rmse)
+print("R2 score of the model is:" ,r2)
 
 
 

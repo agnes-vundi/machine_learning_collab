@@ -35,7 +35,7 @@ X_train = pd.get_dummies(X_train, drop_first=True)
 X_test = pd.get_dummies(X_test, drop_first=True)
 
 # train DecisionTreeClassifier
-model = DecisionTreeRegressor(max_depth=20,
+model = DecisionTreeRegressor(max_depth=30,
                               random_state=0)
 model.fit(X_train,y_train)
 
@@ -52,10 +52,11 @@ mae = mean_absolute_error(y_test, y_pred)
 mse = mean_squared_error(y_test, y_pred)
 rmse = np.sqrt(mse)
 r2 = r2_score(y_test, y_pred)
-print ('\nTestdata metrics:')
-print("Mean Absolute Error is :" ,mae)
-print("Mean Squarred Error is :" ,mse)
-print("Root Mean Squarred Error is : ",rmse)
-print("R2 score of model is :" ,r2)
+print ('\nTest data metrics(max depth is 30):')
+print("Mean Absolute Error is:" ,mae)
+print("Mean Squared Error is:" ,mse)
+print("Root Mean Squared Error is: ",rmse)
+print("R2 score of the model is:" ,r2)
+
 
 
