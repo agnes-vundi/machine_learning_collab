@@ -1,14 +1,9 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score
-import matplotlib.pyplot as plt
-import seaborn as sns
 from sklearn import ensemble
-from sklearn.tree import export_graphviz
-import graphviz
 import numpy as np
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-from sklearn.ensemble import RandomForestRegressor
+
 
 #Prepare data 
 df1 = pd.read_csv('gdp_figures.csv')

@@ -1,12 +1,8 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score
-import matplotlib.pyplot as plt
-import seaborn as sns
 from sklearn import tree
 from sklearn.tree import export_graphviz
 from sklearn.tree import DecisionTreeRegressor
-import graphviz
 import numpy as np
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
@@ -20,7 +16,7 @@ df2 = df2.dropna()
 df = pd.merge(df2, df1)
 df = df.drop_duplicates()
 
-X = df[['country','sex','age','gdp_per_capita ($)']] # or df.loc[:, ['PClass','Age','GenderCode']]
+X = df[['country','sex','age','gdp_per_capita ($)']] 
 y_orig = df[['suicides_no','population']]
 population = df[['population']]
 
